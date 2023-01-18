@@ -92,7 +92,7 @@ let navItems = [
 ];
 
 let Sidebar = ({
-  IsNonMobile,
+  isNonMobile,
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
@@ -104,7 +104,6 @@ let Sidebar = ({
   useEffect(() => {
     setActive(pathname.substring(1));
   }, [pathname]);
-
   return (
     <Box component="nav">
       {isSidebarOpen && (
@@ -133,7 +132,7 @@ let Sidebar = ({
                     ECOMVISION
                   </Typography>
                 </Box>
-                {!IsNonMobile && (
+                {!isNonMobile && (
                   <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                     <ChevronLeft />
                   </IconButton>

@@ -1,7 +1,10 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { api } from "./store/api.js";
 
 let initialState = {
   mode: "dark",
+  userId: "63701cc1f03239b7f700000e",
 };
 
 let globalSlice = createSlice({
@@ -15,8 +18,15 @@ let globalSlice = createSlice({
 });
 
 let store = configureStore({
-  reducer: globalSlice.reducer,
+  reducer: {
+    globalReducer: globalSlice.reducer,
+    [api.reducerPath]: api.reducer,
+  },
+  middleware: (getDefault) => {
+    getDefault().concat(api.middleware);
+  },
 });
+setupListeners(store.dispatch);
 
 export default store;
 export let globalActions = globalSlice.actions;
