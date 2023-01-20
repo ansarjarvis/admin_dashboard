@@ -8,7 +8,7 @@ import Layout from "scenes/layout";
 import Dashboard from "scenes/dashboard";
 
 function App() {
-  let mode = useSelector((state) => state.mode);
+  let mode = useSelector((state) => state.global.mode);
   let theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   return (
     <div className="app">
