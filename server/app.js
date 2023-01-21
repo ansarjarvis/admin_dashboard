@@ -12,22 +12,25 @@ import salesRouter from "./routes/sales.js";
 /* for seeding database */
 
 // import User from "./models/User.js";
-// import { dataUser } from "./seed-data/index.js";
+// import Product from "./models/Product.js";
+// import ProductStat from "./models/ProductStat.js";
+// import { dataUser, dataProduct, dataProductStat } from "./seed-data/index.js";
 
 /* Configuration */
 dotenv.config();
 let app = express();
 app.use(express.json());
 app.use(helmet());
+app.use(cors());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 /* Routes */
-app.use("/", generalRouter);
-app.use("/", clientRouter);
-app.use("/", managementRouter);
-app.use("/", salesRouter);
+app.use("/general", generalRouter);
+app.use("/client", clientRouter);
+app.use("/management", managementRouter);
+app.use("/sales", salesRouter);
 
 /* Mongoose setup */
 
@@ -40,7 +43,9 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`server port : ${PORT}`));
-    /* Only add data one data */
+    /* Only add data one time */
     // User.insertMany(dataUser);
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat);
   })
   .catch((error) => console.log(`${error} did not connect`));
