@@ -25,11 +25,11 @@ import {
   CalendarMonthOutlined,
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
-  PieChartOutline,
+  PieChartOutlined,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import FlexBewtween from "./FlexBetween";
+import FlexBetween from "./FlexBetween";
 import profileImage from "assests/profile.jpeg";
 
 let navItems = [
@@ -75,7 +75,7 @@ let navItems = [
   },
   {
     text: "Breakdown",
-    icon: <PieChartOutline />,
+    icon: <PieChartOutlined />,
   },
   {
     text: "Management",
@@ -120,7 +120,7 @@ let Sidebar = ({
             "& .MuiDrawer-paper": {
               color: theme.palette.secondary[200],
               backgroundColor: theme.palette.background.alt,
-              boxSizing: "border-box",
+              boxSixing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
             },
@@ -128,7 +128,7 @@ let Sidebar = ({
         >
           <Box width="100%">
             <Box m="1.5rem 2rem 2rem 3rem">
-              <FlexBewtween color={theme.palette.secondary.main}>
+              <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
                     ECOMVISION
@@ -139,9 +139,9 @@ let Sidebar = ({
                     <ChevronLeft />
                   </IconButton>
                 )}
-              </FlexBewtween>
+              </FlexBetween>
             </Box>
-            <List>
+            <List sx={{ height: "10px" }}>
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
@@ -190,14 +190,9 @@ let Sidebar = ({
               })}
             </List>
           </Box>
-
           <Box position="absolute" bottom="2rem">
             <Divider />
-            <FlexBewtween
-              textTransform="none"
-              gap="1rem"
-              m="1.5rem 2rem 0 3rem"
-            >
+            <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
               <Box
                 component="img"
                 alt="profile"
@@ -227,7 +222,7 @@ let Sidebar = ({
               <SettingsOutlined
                 sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
               />
-            </FlexBewtween>
+            </FlexBetween>
           </Box>
         </Drawer>
       )}
