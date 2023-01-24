@@ -14,13 +14,13 @@ import salesRouter from "./routes/sales.js";
 // import User from "./models/User.js";
 // import Product from "./models/Product.js";
 // import ProductStat from "./models/ProductStat.js";
-import Transation from "./models/Transaction.js";
-import {
-  dataUser,
-  dataProduct,
-  dataProductStat,
-  dataTransaction,
-} from "./seed-data/index.js";
+// import Transation from "./models/Transaction.js";
+// import {
+//   dataUser,
+//   dataProduct,
+//   dataProductStat,
+//   dataTransaction,
+// } from "./seed-data/index.js";
 
 /* Configuration */
 dotenv.config();

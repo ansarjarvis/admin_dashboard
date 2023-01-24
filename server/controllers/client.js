@@ -2,6 +2,7 @@ import Product from "../models/Product.js";
 import ProductStat from "../models/ProductStat.js";
 import Transaction from "../models/Transaction.js";
 import User from "../models/User.js";
+import getCountryIso3 from "country-iso-2-to-3";
 
 export let getProducts = async (req, res) => {
   try {
@@ -58,6 +59,29 @@ export let getTransactions = async (req, res) => {
       name: { $regex: search, $options: "i" },
     });
     res.status(200).json({ transactions, total });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export let getGeography = async (req, res) => {
+  try {
+    let users = await User.find();
+    let mappedLocations = users.reduce((acc, { country }) => {
+      const countryISO3 = getCountryIso3(country);
+      if (!acc[countryISO3]) {
+        acc[countryISO3] = 0;
+      }
+      acc[countryISO3]++;
+      return acc;
+    }, {});
+
+    let formattedLocations = Object.entries(mappedLocations).map(
+      ([country, count]) => {
+        return { id: country, value: count };
+      }
+    );
+    res.status(200).json(formattedLocations);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
