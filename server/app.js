@@ -11,18 +11,18 @@ import salesRouter from "./routes/sales.js";
 
 /* for seeding database */
 
-// import User from "./models/User.js";
-// import Product from "./models/Product.js";
-// import ProductStat from "./models/ProductStat.js";
-// import Transation from "./models/Transaction.js";
-// import OverallStat from "./models/OverallStat.js";
-// import {
-//   dataUser,
-//   dataProduct,
-//   dataProductStat,
-//   dataTransaction,
-//   dataOverallStat,
-// } from "./seed-data/index.js";
+import User from "./models/User.js";
+import Product from "./models/Product.js";
+import ProductStat from "./models/ProductStat.js";
+import Transation from "./models/Transaction.js";
+import OverallStat from "./models/OverallStat.js";
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+  dataOverallStat,
+} from "./seed-data/index.js";
 
 /* Configuration */
 dotenv.config();
